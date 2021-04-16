@@ -9,6 +9,30 @@ spec:
   rules:
   - http:
       paths:
+      - path: /
+        backend:
+          serviceName: frontend
+          servicePort: 80
+      - path: /api
+        backend:
+          serviceName: checkoutservice
+          servicePort: 8090
+      - path: /static
+        backend:
+          serviceName: checkoutservice
+          servicePort: 8090    
+      - path: /api/carts
+        backend:
+          serviceName: cartservice
+          servicePort: 8091
+      - path: /api/products
+        backend:
+          serviceName: productservice
+          servicePort: 8092
+      - path: /api/recommends
+        backend:
+          serviceName: recommendservice
+          servicePort: 8093
       - path: /api/currencies
         backend:
           serviceName: currencyservice

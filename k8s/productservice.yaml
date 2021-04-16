@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productservice
+spec:
+  selector:
+    matchLabels:
+      app: productservice
+  template:
+    metadata:
+      labels:
+        app: productservice
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: productservice
+        image: productservice
+        ports:
+        - containerPort: 8092
+        env:
+        - name: PORT
+          value: "8092"
+        - name: MONGO_URI
+          value: "mongodb://admin:password@mongodb"
+        - name: INIT_DATA
+          value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productservice
+spec:
+  type: ClusterIP
+  selector:
+    app: productservice
+  ports:
+  - name: api
+    port: 8092
+    targetPort: 8092

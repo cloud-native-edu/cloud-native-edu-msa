@@ -19,10 +19,6 @@ spec:
           env:
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://postgres:5432/eshop_db"
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service

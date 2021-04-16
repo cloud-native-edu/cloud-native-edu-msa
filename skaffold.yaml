@@ -4,10 +4,24 @@ build:
   artifacts:
     - image: currencyservice
       context: currencyservice
+    - image: recommendservice
+      context: recommendservice
+    - image: productservice
+      context: productservice
+    - image: cartservice
+      context: cartservice
+      jib:
+        type: gradle
+    - image: checkoutservice
+      context: checkoutservice
+      jib:
+        type: gradle
     - image: adservice
       context: adservice
       jib:
         type: gradle        
+    - image: frontend
+      context: frontend
 deploy:
   kubectl:
     manifests:
