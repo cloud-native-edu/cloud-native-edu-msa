@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+  artifacts:
+    - image: currencyservice
+      context: currencyservice
+    - image: adservice
+      context: adservice
+      jib:
+        type: gradle        
+deploy:
+  kubectl:
+    manifests:
+      - k8s/**.yaml

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+spec:
+  selector:
+    matchLabels:
+      app: adservice
+  template:
+    metadata:
+      labels:
+        app: adservice
+    spec:
+      containers:
+        - name: adservice
+          image: adservice
+          ports:
+          - containerPort: 8095
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/eshop_db"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adservice
+spec:
+  type: ClusterIP
+  selector:
+    app: adservice
+  ports:
+  - port: 8095
