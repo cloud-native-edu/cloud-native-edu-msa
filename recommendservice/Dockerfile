@@ -1,7 +1,10 @@
-FROM python:3.8-slim-buster
-ADD ./requirements.txt .
-RUN pip install -r requirements.txt
+# build stage
+FROM node:lts-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm set strict-ssl false --global
+RUN npm ci --only=production
 COPY . .
-
+ 
 EXPOSE 8093
-CMD ["sh", "-c", "gunicorn -b 0.0.0.0:8093 app:app --access-logfile - --error-logfile -"]
+CMD ["node", "index.js"]
