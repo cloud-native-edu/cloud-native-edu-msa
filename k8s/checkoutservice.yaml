@@ -21,6 +21,8 @@ spec:
               value: http://cartservice:8091
             - name: URL_PRODUCTSERVICE
               value: http://productservice:8092
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
 ---
 apiVersion: v1
 kind: Service
