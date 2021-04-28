@@ -27,3 +27,4 @@ test {
 
 // jib configurations
 jib.from.image = 'openjdk:11.0.10-jre-slim-buster'
+jib.container.jvmFlags = ['-javaagent:/trace/opentelemetry-javaagent-all.jar']

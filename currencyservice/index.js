@@ -1,3 +1,4 @@
+const tracer = require('./tracer')('currencyservice');
 const express = require('express');
 const data = require('./data/initial-data.json');
 const dotenv = require('dotenv');

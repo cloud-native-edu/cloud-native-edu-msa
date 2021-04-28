@@ -18,8 +18,10 @@ spec:
         ports:
         - containerPort: 8093
         env:
-          - name: URL_PRODUCTSERVICE
-            value: http://productservice:8092
+        - name: URL_PRODUCTSERVICE
+          value: http://productservice:8092
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: "http://jaeger-collector.observability.svc:14268/api/traces"
 ---
 apiVersion: v1
 kind: Service

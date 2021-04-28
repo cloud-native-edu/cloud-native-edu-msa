@@ -24,6 +24,8 @@ spec:
           value: "mongodb://admin:password@mongodb"
         - name: INIT_DATA
           value: "true"
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: "http://jaeger-collector.observability.svc:14268/api/traces"
 ---
 apiVersion: v1
 kind: Service

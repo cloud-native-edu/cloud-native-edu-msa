@@ -18,7 +18,9 @@ spec:
         - containerPort: 8094
         env:
         - name: PORT
-          value: "8094"
+          value: "8094"  
+        - name: OTEL_EXPORTER_JAEGER_ENDPOINT
+          value: "http://jaeger-collector.observability.svc:14268/api/traces"
 ---
 apiVersion: v1
 kind: Service
